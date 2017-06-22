@@ -37,3 +37,7 @@ environment variable called `JFROG_API_KEY`. You can get your key from [your art
 ```
 JFROG_API_KEY=fake-key make publish
 ```
+
+## To Test
+
+Run yarn install (if packages not downloaded) and then run yarn test to run unit tests
