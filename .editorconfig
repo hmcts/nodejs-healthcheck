@@ -1,0 +1,26 @@
+root = true
+
+[*]
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{md,markdown}]
+trim_trailing_whitespace = false
+
+[*.{js,json,yml}]
+indent_style = space
+indent_size = 2
+
+[Jenkinsfile*]
+indent_style = space
+indent_size = 4
+
+# Paths editorconfig should ignore
+[node_modules/**]
+indent_style = ignore
+indent_size = ignore
+end_of_line = ignore
+trim_trailing_whitespace = ignore
+charset = ignore

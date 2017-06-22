@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-healthcheck",
+  "version": "1.2.0",
+  "description": "Healthcheck endpoint for Reform nodejs applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/unit/* --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.reform.hmcts.net:reform/nodejs-healthcheck.git"
+  },
+  "author": "HMCTS Reform",
+  "license": "ISC",
+  "dependencies": {
+    "superagent": "^3.5.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.4.2",
+    "sinon": "^1.17.7",
+    "sinon-chai": "^2.10.0",
+    "nock": "^9.0.0"
+  }
+}
