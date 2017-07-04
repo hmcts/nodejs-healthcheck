@@ -1,6 +1,6 @@
 {
-  "name": "nodejs-healthcheck",
-  "version": "1.2.0",
+  "name": "@hmcts/nodejs-healthcheck",
+  "version": "1.3.0",
   "description": "Healthcheck endpoint for Reform nodejs applications",
   "main": "index.js",
   "scripts": {
@@ -8,10 +8,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@git.reform.hmcts.net:reform/nodejs-healthcheck.git"
+    "url": "git@git.github.com:hmcts/nodejs-healthcheck.git"
   },
   "author": "HMCTS Reform",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "superagent": "^3.5.1"
   },

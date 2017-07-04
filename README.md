@@ -7,7 +7,7 @@ A library for adding reform standard compliant healthchecks to nodejs applicatio
 Configure an express.js handler with checks.
 
 ```javascript
-const healthcheck = require('nodejs-healthcheck');
+const healthcheck = require('@hmcts/nodejs-healthcheck');
 
 app.get("/status", healthcheck.configure({
   checks: {
