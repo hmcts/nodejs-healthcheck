@@ -31,7 +31,7 @@ describe('Checks', () => {
           request.reply(code, "SOMETHING");
 
           check.call().then((result) => {
-            expect(result).to.eql({"status": "DOWN"});
+            expect(result).to.contain({"status": "DOWN"});
             done();
           });
         });
@@ -44,7 +44,7 @@ describe('Checks', () => {
       beforeEach(() => {
         check = new checks.WebCheck("https://example.com/status", {
           callback: (err, res) => {
-            if (res.body.status == "good") {
+            if (res.body.status === "good") {
               return {"status": "UP"};
             } else {
               return {"status": "DOWN"};
