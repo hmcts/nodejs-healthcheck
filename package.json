@@ -13,6 +13,8 @@
   "author": "HMCTS Reform",
   "license": "MIT",
   "dependencies": {
+    "fs-extra": "^3.0.1",
+    "js-yaml": "^3.8.4",
     "superagent": "^3.5.1"
   },
   "devDependencies": {
