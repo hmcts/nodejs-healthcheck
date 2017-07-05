@@ -17,7 +17,7 @@ class WebCheck {
   }
 
   defaultCallback(err, res) {
-    return !err && res.status === 200 ? outputs.up() : outputs.down();
+    return !err && res.status === 200 ? outputs.up() : outputs.down(err);
   }
 
   call() {
