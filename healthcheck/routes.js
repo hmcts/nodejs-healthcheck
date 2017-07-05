@@ -23,8 +23,8 @@ function configure(config) {
       const allOk = Object.values(results)
                           .every(result => result.status === outputs.UP);
       const output = Object.assign(
-        results,
         outputs.status(allOk),
+        results,
         {
           buildInfo: getBuildInfo(config.buildInfo)
         }
