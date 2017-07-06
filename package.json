@@ -1,6 +1,6 @@
 {
   "name": "@hmcts/nodejs-healthcheck",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Healthcheck endpoint for Reform nodejs applications",
   "main": "index.js",
   "scripts": {
@@ -13,13 +13,17 @@
   "author": "HMCTS Reform",
   "license": "MIT",
   "dependencies": {
+    "fs-extra": "^3.0.1",
+    "js-yaml": "^3.8.4",
     "superagent": "^3.5.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-as-promised": "^7.1.1",
     "mocha": "^3.4.2",
-    "sinon": "^1.17.7",
-    "sinon-chai": "^2.10.0",
-    "nock": "^9.0.0"
+    "nock": "^9.0.0",
+    "proxyquire": "^1.8.0",
+    "sinon": "^2.3.6",
+    "sinon-chai": "^2.10.0"
   }
 }

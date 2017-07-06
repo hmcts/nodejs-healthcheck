@@ -1,37 +1,46 @@
 'use strict'
 const checks = require('./checks'),
-      outputs = require('./outputs');
+      outputs = require('./outputs'),
+      versionFile = require('./versionFile');
 
 function getBuildInfo(extra) {
-  let buildInfo = {
-    environment: process.env.PACKAGES_ENVIRONMENT || "unknown",
-    project: process.env.PACKAGES_PROJECT || "unknown",
-    name: process.env.PACKAGES_NAME || "unknown",
-    version: process.env.PACKAGES_VERSION || "unknown",
-  };
-  if (extra) {
-    buildInfo.extra = extra;
-  }
-  return buildInfo;
+  return Promise.all([
+    versionFile.commit(),
+    versionFile.date()
+  ]).then(([commit, date]) => {
+    let buildInfo = {
+      environment: process.env.PACKAGES_ENVIRONMENT || "unknown",
+      project: process.env.PACKAGES_PROJECT || "unknown",
+      name: process.env.PACKAGES_NAME || "unknown",
+      version: process.env.PACKAGES_VERSION || "unknown",
+      commit,
+      date
+    };
+    if (extra) {
+      return Object.assign(buildInfo, { extra });
+    } else {
+      return buildInfo;
+    }
+  });
 }
 
 function configure(config) {
   const check = new checks.CompositeCheck(config.checks);
 
   return (req, res) => {
-    check.call().then(results => {
-      const allOk = Object.values(results)
-                          .every(result => result.status === outputs.UP);
-      const output = Object.assign(
-        outputs.status(allOk),
-        results,
-        {
-          buildInfo: getBuildInfo(config.buildInfo)
-        }
-      );
-      const status = allOk ? 200 : 500;
-      res.status(status).json(output);
-    });
+    return Promise
+      .all([check.call(), getBuildInfo(config.buildInfo)])
+      .then(([results, buildInfo]) => {
+        const allOk = Object.values(results)
+                            .every(result => result.status === outputs.UP);
+        const output = Object.assign(
+          outputs.status(allOk),
+          results,
+          { buildInfo }
+        );
+        const status = allOk ? 200 : 500;
+        res.status(status).json(output);
+      });
   }
 }
 
