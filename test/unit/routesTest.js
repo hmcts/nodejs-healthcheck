@@ -18,7 +18,9 @@ describe('Routes', () => {
 
   beforeEach(() => {
     sinon.stub(versionFile, 'commit');
+    sinon.stub(versionFile, 'date');
     versionFile.commit.resolves('abc1234');
+    versionFile.date.resolves('Jan 1 1970');
     envKeys.forEach(key => {
       originalEnv[key] = process.env[key];
       process.env[key] = "test " + key;
@@ -27,6 +29,7 @@ describe('Routes', () => {
 
   afterEach(() => {
     versionFile.commit.restore();
+    versionFile.date.restore();
     envKeys.forEach(key => {
       if (typeof originalEnv[key] === "undefined") {
         delete process.env[key];
@@ -45,7 +48,8 @@ describe('Routes', () => {
         project: "test PACKAGES_PROJECT",
         name: "test PACKAGES_NAME",
         version: "test PACKAGES_VERSION",
-        commit: 'abc1234'
+        commit: 'abc1234',
+        date: 'Jan 1 1970'
       });
     });
 
@@ -88,7 +92,8 @@ describe('Routes', () => {
           project: "test PACKAGES_PROJECT",
           name: "test PACKAGES_NAME",
           version: "test PACKAGES_VERSION",
-          commit: 'abc1234'
+          commit: 'abc1234',
+          date: 'Jan 1 1970'
         }
       });
 
@@ -111,7 +116,8 @@ describe('Routes', () => {
           project: "test PACKAGES_PROJECT",
           name: "test PACKAGES_NAME",
           version: "test PACKAGES_VERSION",
-          commit: 'abc1234'
+          commit: 'abc1234',
+          date: 'Jan 1 1970'
         }
       });
 
@@ -137,6 +143,7 @@ describe('Routes', () => {
           name: "test PACKAGES_NAME",
           version: "test PACKAGES_VERSION",
           commit: 'abc1234',
+          date: 'Jan 1 1970',
           extra: {
             foo: "bar"
           }
