@@ -29,7 +29,7 @@ function configure(config) {
 
   return (req, res) => {
     return Promise
-      .all([check.call(), getBuildInfo(config.buildInfo)])
+      .all([check.call(req, res), getBuildInfo(config.buildInfo)])
       .then(([results, buildInfo]) => {
         const allOk = Object.values(results)
                             .every(result => result.status === outputs.UP);
