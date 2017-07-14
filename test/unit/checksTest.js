@@ -91,6 +91,16 @@ describe('Checks', () => {
         });
       });
 
+      it('passes the express req and res to the callback', () => {
+        const expressRequest = sinon.spy();
+        const expressResponse = sinon.spy();
+        const check = new checks.RawCheck((req, res) => {
+          expect(req).to.eql(expressRequest);
+          expect(res).to.eql(expressResponse);
+        });
+        return check.call(expressRequest, expressResponse);
+      });
+
     });
 
   });
@@ -115,6 +125,23 @@ describe('Checks', () => {
           done();
         });
       });
+
+
+      it('passes the express req and res to the child checks', (done) => {
+        const expressRequest = sinon.spy();
+        const expressResponse = sinon.spy();
+        const childCheck = new checks.RawCheck((req, res) => {
+          expect(req).to.eql(expressRequest);
+          expect(res).to.eql(expressResponse);
+          done();
+        });
+        const check = new checks.CompositeCheck({
+          'child': childCheck
+        });
+
+        check.call(expressRequest, expressResponse);
+      });
+
     });
   });
 });

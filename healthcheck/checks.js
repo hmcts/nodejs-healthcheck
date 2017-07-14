@@ -42,9 +42,9 @@ class RawCheck {
     return new RawCheck(callback);
   }
 
-  call() {
+  call(req, res) {
     return new Promise((resolve) => {
-      resolve(this.callback());
+      resolve(this.callback(req, res));
     });
   }
 }
@@ -59,9 +59,9 @@ class CompositeCheck {
     return new CompositeCheck(checks);
   }
 
-  call() {
+  call(req, res) {
     let checks = Object.entries(this.checks),
-        promises = checks.map(check => check[1].call()),
+        promises = checks.map(check => check[1].call(req, res)),
         all = Promise.all(promises);
 
     return new Promise(resolve => {
