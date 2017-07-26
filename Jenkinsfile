@@ -29,8 +29,8 @@ node {
     stage('Test') {
       sh 'yarn test'
     }
-
-    onMaster {
+    onPR {
+    //onMaster {
       stage('Publish') {
         publishNodePackage publicRegistry: true
       }
