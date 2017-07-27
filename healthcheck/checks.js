@@ -10,6 +10,7 @@ class WebCheck {
     this.callback = options.callback || this.defaultCallback;
     this.timeout = options.timeout || 2000;
     this.deadline = options.deadline || 5000;
+    this.ca = options.ca
   }
 
   static create(url, options={}) {
@@ -24,6 +25,7 @@ class WebCheck {
     return new Promise((resolve) => {
       request
         .get(this.url)
+        .ca(this.ca)
         .timeout({response: this.timeout, deadline: this.deadline})
         .end((err, res) => {
           resolve(this.callback(err, res));
