@@ -15,7 +15,7 @@ indent_size = 2
 
 [Jenkinsfile*]
 indent_style = space
-indent_size = 4
+indent_size = 2
 
 # Paths editorconfig should ignore
 [node_modules/**]
