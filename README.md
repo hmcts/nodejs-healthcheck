@@ -1,5 +1,7 @@
 # Nodejs Healthcheck
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/hmcts/nodejs-healthcheck.svg)](https://greenkeeper.io/)
+
 A library for adding reform standard compliant healthchecks to nodejs applications.
 
 ## Usage
