@@ -16,7 +16,9 @@ const versionFile = () => {
 }
 
 const version = () => {
-  return versionFile().then(props => props.version + ((props.build) ? "-" + props.build : "") || defaultObj.version);
+  return versionFile().then(props => {
+    return (props.version) ? (props.build) ?  props.version + "-" + props.build : props.version : defaultObj.version
+  });
 };
 
 const commit = () => {
