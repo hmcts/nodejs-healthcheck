@@ -1,18 +1,27 @@
 const fs = require('fs-extra');
 const yaml = require('js-yaml');
 
-const defaultObj = {
-  commit: 'unknown',
-  date: 'unknown'
-};
+let defaultObj
 
 const versionFile = () => {
   const versionFilePath = `${process.env.NODE_PATH || '.'}/version`;
+
+   defaultObj = {
+    version: process.env.PACKAGES_VERSION || 'unknown',
+    commit: 'unknown',
+    date: 'unknown'
+  };
 
   return fs.readFile(versionFilePath)
     .then(yaml.safeLoad)
     .catch((err) => defaultObj);
 }
+
+const version = () => {
+  return versionFile().then(props => {
+    return (props.version) ? (props.build) ?  props.version + "-" + props.build : props.version : defaultObj.version
+  });
+};
 
 const commit = () => {
   return versionFile().then(props => props.commit || defaultObj.commit);
@@ -22,4 +31,4 @@ const date = () => {
   return versionFile().then(props => props.date || defaultObj.date);
 }
 
-module.exports = { commit, date };
+module.exports = { version, commit, date };

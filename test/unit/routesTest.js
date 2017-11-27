@@ -12,15 +12,16 @@ const {expect, sinon} = require('../chai-sinon'),
 describe('Routes', () => {
   let originalEnv = {};
   const envKeys = [
-    'PACKAGES_ENVIRONMENT', 'PACKAGES_PROJECT',
-    'PACKAGES_NAME', 'PACKAGES_VERSION'
+    'PACKAGES_ENVIRONMENT', 'PACKAGES_PROJECT', 'PACKAGES_NAME'
   ];
 
   beforeEach(() => {
     sinon.stub(versionFile, 'commit');
     sinon.stub(versionFile, 'date');
+    sinon.stub(versionFile, 'version');
     versionFile.commit.resolves('abc1234');
     versionFile.date.resolves('Jan 1 1970');
+    versionFile.version.resolves('1.4.3-42');
     envKeys.forEach(key => {
       originalEnv[key] = process.env[key];
       process.env[key] = "test " + key;
@@ -30,6 +31,7 @@ describe('Routes', () => {
   afterEach(() => {
     versionFile.commit.restore();
     versionFile.date.restore();
+    versionFile.version.restore();
     envKeys.forEach(key => {
       if (typeof originalEnv[key] === "undefined") {
         delete process.env[key];
@@ -47,7 +49,7 @@ describe('Routes', () => {
         environment: "test PACKAGES_ENVIRONMENT",
         project: "test PACKAGES_PROJECT",
         name: "test PACKAGES_NAME",
-        version: "test PACKAGES_VERSION",
+        version: "1.4.3-42",
         commit: 'abc1234',
         date: 'Jan 1 1970'
       });
@@ -91,7 +93,7 @@ describe('Routes', () => {
           environment: "test PACKAGES_ENVIRONMENT",
           project: "test PACKAGES_PROJECT",
           name: "test PACKAGES_NAME",
-          version: "test PACKAGES_VERSION",
+          version: "1.4.3-42",
           commit: 'abc1234',
           date: 'Jan 1 1970'
         }
@@ -115,7 +117,7 @@ describe('Routes', () => {
           environment: "test PACKAGES_ENVIRONMENT",
           project: "test PACKAGES_PROJECT",
           name: "test PACKAGES_NAME",
-          version: "test PACKAGES_VERSION",
+          version: "1.4.3-42",
           commit: 'abc1234',
           date: 'Jan 1 1970'
         }
@@ -141,7 +143,7 @@ describe('Routes', () => {
           environment: "test PACKAGES_ENVIRONMENT",
           project: "test PACKAGES_PROJECT",
           name: "test PACKAGES_NAME",
-          version: "test PACKAGES_VERSION",
+          version: "1.4.3-42",
           commit: 'abc1234',
           date: 'Jan 1 1970',
           extra: {

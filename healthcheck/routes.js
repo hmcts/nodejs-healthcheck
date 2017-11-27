@@ -5,14 +5,15 @@ const checks = require('./checks'),
 
 function getBuildInfo(extra) {
   return Promise.all([
+    versionFile.version(),
     versionFile.commit(),
     versionFile.date()
-  ]).then(([commit, date]) => {
+  ]).then(([version, commit, date]) => {
     let buildInfo = {
       environment: process.env.PACKAGES_ENVIRONMENT || "unknown",
       project: process.env.PACKAGES_PROJECT || "unknown",
       name: process.env.PACKAGES_NAME || "unknown",
-      version: process.env.PACKAGES_VERSION || "unknown",
+      version,
       commit,
       date
     };
