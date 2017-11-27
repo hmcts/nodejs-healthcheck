@@ -1,14 +1,16 @@
 const fs = require('fs-extra');
 const yaml = require('js-yaml');
 
-const defaultObj = {
-  version: 'unknown',
-  commit: 'unknown',
-  date: 'unknown'
-};
+let defaultObj
 
 const versionFile = () => {
   const versionFilePath = `${process.env.NODE_PATH || '.'}/version`;
+
+   defaultObj = {
+    version: process.env.PACKAGES_VERSION || 'unknown',
+    commit: 'unknown',
+    date: 'unknown'
+  };
 
   return fs.readFile(versionFilePath)
     .then(yaml.safeLoad)
