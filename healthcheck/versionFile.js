@@ -2,6 +2,7 @@ const fs = require('fs-extra');
 const yaml = require('js-yaml');
 
 const defaultObj = {
+  version: 'unknown',
   commit: 'unknown',
   date: 'unknown'
 };
@@ -14,6 +15,10 @@ const versionFile = () => {
     .catch((err) => defaultObj);
 }
 
+const version = () => {
+  return versionFile().then(props => props.version + ((props.build) ? "-" + props.build : "") || defaultObj.version);
+};
+
 const commit = () => {
   return versionFile().then(props => props.commit || defaultObj.commit);
 };
@@ -22,4 +27,4 @@ const date = () => {
   return versionFile().then(props => props.date || defaultObj.date);
 }
 
-module.exports = { commit, date };
+module.exports = { version, commit, date };
