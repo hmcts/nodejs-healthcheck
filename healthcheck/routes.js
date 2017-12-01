@@ -10,9 +10,9 @@ function getBuildInfo(extra) {
     versionFile.date()
   ]).then(([version, commit, date]) => {
     let buildInfo = {
-      environment: process.env.PACKAGES_ENVIRONMENT || "unknown",
-      project: process.env.PACKAGES_PROJECT || "unknown",
-      name: process.env.PACKAGES_NAME || "unknown",
+      environment: process.env.PACKAGES_ENVIRONMENT || process.env.REFORM_ENVIRONMENT || "unknown",
+      project: process.env.PACKAGES_PROJECT || process.env.REFORM_TEAM || "unknown",
+      name: process.env.PACKAGES_NAME || process.env.REFORM_SERVICE_NAME || "unknown",
       version,
       commit,
       date
