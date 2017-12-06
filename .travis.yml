@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- node
+deploy:
+  provider: npm
+  email: jenkins-reform@hmcts.net
+  api_key:
+    secure: 4YisHqH3xqPmlyQB8Ujmahhpbjgl4wRyU+fYhAoZ1mY013CxX6ZWTuye/P6qg8vekcUkpyfUd57yM39w9IcbD7cLeZhvim9/PDIBhFEGXY7103F7CVymDMRc+F1GpUaRAYvhACzMOHpj8sgyY2YA4HvNNFiLwu1l4Fb1grtog8vMQJapydXy60XeRmYK+62PSegjrY3YZKIIJCI23nLqyWmG4u6GPsTFfF3Ls3a2kZDmxMo7aX8OPyLXJBaLcMwVzjcJ5e1icb2xr9df4AnBz1Vny0NC5vM3ohK9Wans7prGf/AtRxj8KdWvxlj0leuTaFFzX/2rJg7Nc7k9SoCGDDwJKniYzuEo3jRi5LM04CjmEW41ru0TPIyRgtNxBVg5BbTLp9ZLlGSH+R39lHn8X8+hVIbLBHJI3QO6dqjvbM/yE/taw/COpn7JE8dfLC7fO/si3Ea1mSICSWWXDxF6JqUPVYR+0Xow8cDs/2SBGDVp+IU46qJ6GHJGxK8aYyQOl8UKWNPI1iJWHYAOYmvZxKhrfDRfW8IE2cB17Fc+WsYeTSTGPycMcFBw0i4ZdkHww3kQxvlVr1d7lcuPNXLG2+Qr6APdRd/jx11lBmkF3OysuASsYjA9zxTHGI1GhbY19jwPIqeRm9Mm8ElEJRj9OXBKTLb4stnIUEen9mZzSkg=
+  on:
+    tags: true
+    repo: hmcts/nodejs-healthcheck
