@@ -17,7 +17,7 @@ describe('versionFile', () => {
 
   describe('version', () => {
     it('should resolve the version', () => {
-      fs.readFile.resolves('version: 1.4.3\nbuild: 42');
+      fs.readFile.resolves('version: 1.4.3\nnumber: 42');
       return expect(versionFile.version()).to.eventually.eql('1.4.3-42');
     });
 
@@ -58,7 +58,7 @@ describe('versionFile', () => {
       });
 
         it('should resolve the version to Version even with Environment Variables', () => {
-          fs.readFile.resolves('version: 1.4.3\nbuild: 42');
+          fs.readFile.resolves('version: 1.4.3\nnumber: 42');
           return expect(versionFileWithEnv.version()).to.eventually.eql('1.4.3-42');
         });
 
@@ -68,7 +68,7 @@ describe('versionFile', () => {
         });
 
         it('should resolve the version to Environment Variables if no version present in version file but build is there', () => {
-          fs.readFile.resolves('build: 42');
+          fs.readFile.resolves('number: 42');
           return expect(versionFile.version()).to.eventually.eql('v1.42');
         });
 
