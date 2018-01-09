@@ -19,7 +19,7 @@ const versionFile = () => {
 
 const version = () => {
   return versionFile().then(props => {
-    return (props.version) ? (props.build) ?  props.version + "-" + props.build : props.version : defaultObj.version
+    return (props.version) ? (props.number) ?  props.version + "-" + props.number : props.version : defaultObj.version
   });
 };
 
