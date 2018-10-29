@@ -1,6 +1,5 @@
 language: node_js
 node_js:
-  - "8.9.4"   # Likely set Azure webapp minimum
   - "8.11.1"  # Highest 8.* in Azure
   - "lts/*"   # Latest Node 8.* LTS
   - "10.6.0"  # Highest Azure 10.*
