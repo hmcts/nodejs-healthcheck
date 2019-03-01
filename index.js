@@ -3,10 +3,12 @@
 const request = require('superagent'),
       checks  = require('./healthcheck/checks'),
       outputs = require('./healthcheck/outputs'),
-      routes  = require('./healthcheck/routes');
+      routes  = require('./healthcheck/routes'),
+      install  = require('./healthcheck/install');
 
 
 module.exports = {
+  "addTo": install.addTo,
   "configure": routes.configure,
   // outputs
   "up": outputs.up,
