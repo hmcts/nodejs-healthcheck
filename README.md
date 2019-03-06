@@ -33,7 +33,7 @@ app.get("/status", healthcheck.configure({
 
 ## Publishing
 
-We use Travis for publishing via build pipelines once code has been merged.
+Bump the version (SemVer) and create a release in the GitHub UI, Travis CI will then build test and release to the npm registry.
 
 ## To Test
 
