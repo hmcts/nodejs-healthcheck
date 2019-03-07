@@ -28,17 +28,12 @@ app.get("/status", healthcheck.configure({
   buildInfo: {
     myCustomBuildInfo: "yay"
   }
-});
+}));
 ```
 
 ## Publishing
 
-To package and publish use the Makefile target. This requires your artifactory API key to be set to an
-environment variable called `JFROG_API_KEY`. You can get your key from [your artifactory profile](https://artifactory.reform.hmcts.net/artifactory/webapp/#/profile).
-
-```
-JFROG_API_KEY=fake-key make publish
-```
+Bump the version (SemVer) and create a release in the GitHub UI, Travis CI will then build test and release to the npm registry.
 
 ## To Test
 
