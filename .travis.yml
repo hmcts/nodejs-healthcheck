@@ -1,14 +1,14 @@
 language: node_js
 node_js:
-  - "8.11.1"  # Highest 8.* in Azure
-  - "lts/*"   # Latest LTS Node
-  - "10.6.0"  # Highest Azure 10.*
-  - "node"    # Latest stable Node
+- "8.11.1"  # Highest 8.* in Azure
+- "lts/*"   # Latest LTS Node
+- "10.6.0"  # Highest Azure 10.*
+- "node"    # Latest stable Node
 deploy:
   provider: npm
   email: jenkins-reform@hmcts.net
   api_key:
-    secure: 4YisHqH3xqPmlyQB8Ujmahhpbjgl4wRyU+fYhAoZ1mY013CxX6ZWTuye/P6qg8vekcUkpyfUd57yM39w9IcbD7cLeZhvim9/PDIBhFEGXY7103F7CVymDMRc+F1GpUaRAYvhACzMOHpj8sgyY2YA4HvNNFiLwu1l4Fb1grtog8vMQJapydXy60XeRmYK+62PSegjrY3YZKIIJCI23nLqyWmG4u6GPsTFfF3Ls3a2kZDmxMo7aX8OPyLXJBaLcMwVzjcJ5e1icb2xr9df4AnBz1Vny0NC5vM3ohK9Wans7prGf/AtRxj8KdWvxlj0leuTaFFzX/2rJg7Nc7k9SoCGDDwJKniYzuEo3jRi5LM04CjmEW41ru0TPIyRgtNxBVg5BbTLp9ZLlGSH+R39lHn8X8+hVIbLBHJI3QO6dqjvbM/yE/taw/COpn7JE8dfLC7fO/si3Ea1mSICSWWXDxF6JqUPVYR+0Xow8cDs/2SBGDVp+IU46qJ6GHJGxK8aYyQOl8UKWNPI1iJWHYAOYmvZxKhrfDRfW8IE2cB17Fc+WsYeTSTGPycMcFBw0i4ZdkHww3kQxvlVr1d7lcuPNXLG2+Qr6APdRd/jx11lBmkF3OysuASsYjA9zxTHGI1GhbY19jwPIqeRm9Mm8ElEJRj9OXBKTLb4stnIUEen9mZzSkg=
+    secure: b9+6uhSccBiK6n9l0pSLE0JtyND4SzfAVI8vnBfGMUiS8Kp3W4BiFAp3xeJuHaOhZyFD/o6g6kFSEYrnri3KLQROlHTID5m0GdJww5lObdW72FjTuMS4wbk0nI/FfbIMXFgWnscm/ZQCgyLF7pnOlB7NrUGWgZzD6Vtf2rFuZVGgYerpEEb0fmaf5WsVO1ZoeLiM79mvI3gg6nx/VHANp/sW6jHaVZk38eUYdQ9WPZNIJWX5dyWJKs/kr5mG+HfJHLJcDZWf5JeR8gFZ4VIm7zbCtlFh7KH4NqpIU+ca/ctMSduEvCNkY5h1dwmPltNOYZz616FUKdQF6gXAdLotxBuH5Ajeo4ddNMxjDTRcu6qnLBw7kiF3RFMyYS3yzhbtVsjQNkWl3RpLDe9bvJetjqH1BV+wBSl4i0wP1LLHwpZroLJNh+HSiEXGpx3bEbPiHTBcKDd97sY5a68nPk2wvex59iFUeF/k6bssFM3i2yCWyZOQzDEZndTIyoqz+AMNAdfAZpDUadX+uFEkHcQIcX8LpJXioI3+Uf6ymDZDAigSjjROSYnZQiRffLWq7SDCIqqmGtUzH0EHJwMHAX7GiBBpQa4UTdZxaOfpMKVr98HWi3NAZeOB1My2xWFU4jDIBlVZ/2Jd/aREK79XRlorEuVF/c+w6AYRQkda558R8vM=
   on:
     tags: true
     repo: hmcts/nodejs-healthcheck
