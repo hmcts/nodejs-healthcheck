@@ -1,0 +1,56 @@
+name: Node.js Package
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+      - refs/tags/*
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - run: npm ci
+      - run: npm test
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        if: startsWith(github.ref, 'refs/tags')
+      - uses: actions/setup-node@v1
+        if: startsWith(github.ref, 'refs/tags')
+        with:
+          node-version: 10
+          registry-url: https://registry.npmjs.org/
+      - run: npm publish
+        if: startsWith(github.ref, 'refs/tags')
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
+
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        if: startsWith(github.ref, 'refs/tags')
+      - uses: actions/setup-node@v1
+        if: startsWith(github.ref, 'refs/tags')
+        with:
+          node-version: 10
+          registry-url: https://npm.pkg.github.com/
+          scope: '@hmcts'
+      - run: npm publish
+        if: startsWith(github.ref, 'refs/tags')
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
