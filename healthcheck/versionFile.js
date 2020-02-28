@@ -1,7 +1,7 @@
-const fs = require('fs-extra');
+const fs = require('fs').promises;
 const yaml = require('js-yaml');
 
-let defaultObj
+let defaultObj;
 
 const versionFile = () => {
   const versionFilePath = `${process.env.NODE_PATH || '.'}/version`;
@@ -15,7 +15,7 @@ const versionFile = () => {
   return fs.readFile(versionFilePath)
     .then(yaml.safeLoad)
     .catch((err) => defaultObj);
-}
+};
 
 const version = () => {
   return versionFile().then(props => {
@@ -29,6 +29,6 @@ const commit = () => {
 
 const date = () => {
   return versionFile().then(props => props.date || defaultObj.date);
-}
+};
 
 module.exports = { version, commit, date };

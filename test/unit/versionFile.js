@@ -2,7 +2,7 @@
 /* global describe, beforeEach, afterEach, it */
 
 const {expect, sinon} = require('../chai-sinon');
-const fs = require('fs-extra');
+const fs = require('fs').promises;
 const versionFile = require('../../healthcheck/versionFile');
 
 describe('versionFile', () => {
