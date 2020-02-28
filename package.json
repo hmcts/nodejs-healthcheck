@@ -3,6 +3,9 @@
   "version": "1.5.1",
   "description": "Healthcheck endpoint for Reform nodejs applications",
   "main": "index.js",
+  "engines": {
+    "node": ">10.0.0"
+  },
   "scripts": {
     "test": "mocha test/unit/* --reporter spec"
   },
@@ -13,19 +16,18 @@
   "author": "HMCTS Reform",
   "license": "MIT",
   "dependencies": {
-    "fs-extra": "^4.0.1",
     "js-yaml": "^3.8.4",
-    "superagent": "^3.5.1"
+    "superagent": "5"
   },
   "devDependencies": {
     "chai": "^4.1.1",
     "chai-as-promised": "^7.1.1",
+    "express": "^4.16.4",
     "mocha": "^3.4.2",
     "nock": "^9.0.0",
     "proxyquire": "^1.8.0",
     "sinon": "^3.2.0",
     "sinon-chai": "^2.10.0",
-    "supertest": "^3.4.2",
-    "express": "^4.16.4"
+    "supertest": "^3.4.2"
   }
 }

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 const checks = require('./checks'),
       outputs = require('./outputs'),
       versionFile = require('./versionFile');
