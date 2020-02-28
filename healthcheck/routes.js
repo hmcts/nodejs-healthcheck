@@ -3,6 +3,9 @@ const checks = require('./checks'),
       outputs = require('./outputs'),
       versionFile = require('./versionFile');
 
+const { Logger } = require('@hmcts/nodejs-logging');
+const logger = Logger.getLogger('@hmcts/nodejs-logging/routes');
+
 function getBuildInfo(extra) {
   return Promise.all([
     versionFile.version(),
@@ -40,6 +43,12 @@ function configure(config) {
           { buildInfo }
         );
         const status = allOk ? 200 : 500;
+        if (!allOk) {
+          const downHealthChecks = Object.values(results)
+            .filter(result => result.status === outputs.DOWN);
+
+          logger.error('Health check failed, result for down endpoints: ', JSON.stringify(downHealthChecks));
+        }
         res.status(status).json(output);
       });
   }
