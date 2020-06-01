@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
-const request = require('superagent'),
-      outputs = require('./outputs');
+const request = require('superagent');
+const outputs = require('./outputs');
 
 
 class WebCheck {
@@ -10,7 +10,7 @@ class WebCheck {
     this.callback = options.callback || this.defaultCallback;
     this.timeout = options.timeout || 2000;
     this.deadline = options.deadline || 5000;
-    this.ca = options.ca
+    this.ca = options.ca;
   }
 
   static create(url, options={}) {
@@ -24,12 +24,12 @@ class WebCheck {
   call() {
     return new Promise((resolve) => {
       request
-        .get(this.url)
-        .ca(this.ca)
-        .timeout({response: this.timeout, deadline: this.deadline})
-        .end((err, res) => {
-          resolve(this.callback(err, res));
-        });
+          .get(this.url)
+          .ca(this.ca)
+          .timeout({response: this.timeout, deadline: this.deadline})
+          .end((err, res) => {
+            resolve(this.callback(err, res));
+          });
     });
   }
 }
@@ -62,16 +62,16 @@ class CompositeCheck {
   }
 
   call(req, res) {
-    let checks = Object.entries(this.checks),
-        promises = checks.map(check => check[1].call(req, res)),
-        all = Promise.all(promises);
+    const checks = Object.entries(this.checks);
+    const promises = checks.map((check) => check[1].call(req, res));
+    const all = Promise.all(promises);
 
-    return new Promise(resolve => {
-      all.then(results => {
+    return new Promise((resolve) => {
+      all.then((results) => {
         resolve(
-          results
-            .map((result, i) => [checks[i][0], result])
-            .reduce((prev, curr) => Object.assign(prev, {[curr[0]]: curr[1]}), {}))
+            results
+                .map((result, i) => [checks[i][0], result])
+                .reduce((prev, curr) => Object.assign(prev, {[curr[0]]: curr[1]}), {}));
       });
     });
   }
@@ -79,7 +79,7 @@ class CompositeCheck {
 
 
 module.exports = {
-  "WebCheck": WebCheck,
-  "RawCheck": RawCheck,
-  "CompositeCheck": CompositeCheck,
+  'WebCheck': WebCheck,
+  'RawCheck': RawCheck,
+  'CompositeCheck': CompositeCheck,
 };

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const request = require('supertest');
 const express = require('express');
@@ -6,11 +6,11 @@ const app = express();
 const install = require('../../healthcheck/install');
 const {expect, sinon} = require('../chai-sinon');
 
-let validConfig = {
+const validConfig = {
   checks: {},
   buildInfo: {
-    'unit-testing': 'nodejs-healthcheck test'
-  }
+    'unit-testing': 'nodejs-healthcheck test',
+  },
 };
 
 before(() => {
@@ -19,7 +19,7 @@ before(() => {
 
 describe('Testing liveness', function() {
   it('should return 200 OK', function(done) {
-      request(app)
+    request(app)
         .get('/health/liveness')
         .expect(200)
         .end((err, res) => {
@@ -35,30 +35,30 @@ describe('Testing liveness', function() {
 describe('Testing health for 200 OK', function() {
   it('should return 200 OK', function(done) {
     request(app)
-      .get('/health')
-      .expect(200)
-      .end((err, res) => {
-        if (err) {
-          return done(err);
-        }
-        expect(res.body.status).to.be.equal('UP');
-        done();
-      });
+        .get('/health')
+        .expect(200)
+        .end((err, res) => {
+          if (err) {
+            return done(err);
+          }
+          expect(res.body.status).to.be.equal('UP');
+          done();
+        });
   });
 });
 
 describe('Testing Readiness for 200 OK', function() {
   it('should return 200 OK', function(done) {
     request(app)
-      .get('/health/readiness')
-      .expect(200)
-      .end((err, res) => {
-        if (err) {
-          return done(err);
-        }
-        expect(res.body.status).to.be.equal('UP');
-        done();
-      });
+        .get('/health/readiness')
+        .expect(200)
+        .end((err, res) => {
+          if (err) {
+            return done(err);
+          }
+          expect(res.body.status).to.be.equal('UP');
+          done();
+        });
   });
 });
 

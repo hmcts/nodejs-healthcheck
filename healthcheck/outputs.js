@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
-const UP = "UP",
-      DOWN = "DOWN";
+const UP = 'UP';
+const DOWN = 'DOWN';
 
 function up(extra={}) {
   return status(true, extra);
@@ -13,14 +13,14 @@ function down(extra={}) {
 
 function status(s, extra={}) {
   return Object.assign({}, extra, {
-    "status": s ? UP : DOWN,
+    'status': s ? UP : DOWN,
   });
 }
 
 module.exports = {
-  "up": up,
-  "down": down,
-  "status": status,
-  "UP": UP,
-  "DOWN": DOWN,
+  'up': up,
+  'down': down,
+  'status': status,
+  'UP': UP,
+  'DOWN': DOWN,
 };

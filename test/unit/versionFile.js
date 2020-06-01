@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 /* global describe, beforeEach, afterEach, it */
 
 const {expect, sinon} = require('../chai-sinon');
@@ -6,7 +6,6 @@ const fs = require('fs').promises;
 const versionFile = require('../../healthcheck/versionFile');
 
 describe('versionFile', () => {
-
   beforeEach(() => {
     sinon.stub(fs, 'readFile');
   });
@@ -42,48 +41,45 @@ describe('versionFile', () => {
     });
 
 
-
     describe('version with Environment Variables', () => {
-    let versionFileWithEnv
+      let versionFileWithEnv;
 
       beforeEach(() => {
-          process.env["PACKAGES_VERSION"] = 'v1.42'
-          process.env.PACKAGES_VERSION = 'v1.42'
-          versionFileWithEnv = require('../../healthcheck/versionFile')
+        process.env['PACKAGES_VERSION'] = 'v1.42';
+        process.env.PACKAGES_VERSION = 'v1.42';
+        versionFileWithEnv = require('../../healthcheck/versionFile');
       });
 
       afterEach(() => {
-        delete process.env.PACKAGES_VERSION
-        delete process.env["PACKAGES_VERSION"]
+        delete process.env.PACKAGES_VERSION;
+        delete process.env['PACKAGES_VERSION'];
       });
 
-        it('should resolve the version to Version even with Environment Variables', () => {
-          fs.readFile.resolves('version: 1.4.3\nnumber: 42');
-          return expect(versionFileWithEnv.version()).to.eventually.eql('1.4.3-42');
-        });
+      it('should resolve the version to Version even with Environment Variables', () => {
+        fs.readFile.resolves('version: 1.4.3\nnumber: 42');
+        return expect(versionFileWithEnv.version()).to.eventually.eql('1.4.3-42');
+      });
 
-        it('should resolve the version even if build is missing even with Environment Variables', () => {
-          fs.readFile.resolves('version: 1.4.3');
-          return expect(versionFile.version()).to.eventually.eql('1.4.3');
-        });
+      it('should resolve the version even if build is missing even with Environment Variables', () => {
+        fs.readFile.resolves('version: 1.4.3');
+        return expect(versionFile.version()).to.eventually.eql('1.4.3');
+      });
 
-        it('should resolve the version to Environment Variables if no version present in version file but build is there', () => {
-          fs.readFile.resolves('number: 42');
-          return expect(versionFile.version()).to.eventually.eql('v1.42');
-        });
+      it('should resolve the version to Environment Variables if no version present in version file but build is there', () => {
+        fs.readFile.resolves('number: 42');
+        return expect(versionFile.version()).to.eventually.eql('v1.42');
+      });
 
-        it('should resolve the version to Environment Variables "v1.42" when versionFile has no version', () => {
-          fs.readFile.resolves('foo: bar');
-          return expect(versionFileWithEnv.version()).to.eventually.eql('v1.42');
-        });
+      it('should resolve the version to Environment Variables "v1.42" when versionFile has no version', () => {
+        fs.readFile.resolves('foo: bar');
+        return expect(versionFileWithEnv.version()).to.eventually.eql('v1.42');
+      });
 
-        it('should resolve the version to Environment Variables "v1.42" when no versionFile exists', () => {
-          fs.readFile.rejects('no file found');
-          return expect(versionFileWithEnv.version()).to.eventually.eql('v1.42');
-        });
-
-     });
-
+      it('should resolve the version to Environment Variables "v1.42" when no versionFile exists', () => {
+        fs.readFile.rejects('no file found');
+        return expect(versionFileWithEnv.version()).to.eventually.eql('v1.42');
+      });
+    });
   });
 
 
