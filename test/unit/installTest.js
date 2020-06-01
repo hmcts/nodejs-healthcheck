@@ -32,10 +32,25 @@ describe('Testing liveness', function() {
   });
 });
 
-describe('Testing Readiness for 200 OK', function() {
+describe('Testing health for 200 OK', function() {
   it('should return 200 OK', function(done) {
     request(app)
       .get('/health')
+      .expect(200)
+      .end((err, res) => {
+        if (err) {
+          return done(err);
+        }
+        expect(res.body.status).to.be.equal('UP');
+        done();
+      });
+  });
+});
+
+describe('Testing Readiness for 200 OK', function() {
+  it('should return 200 OK', function(done) {
+    request(app)
+      .get('/health/readiness')
       .expect(200)
       .end((err, res) => {
         if (err) {

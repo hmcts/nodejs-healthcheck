@@ -127,6 +127,55 @@ describe('Routes', () => {
 
     });
 
+
+    it('should return 200 and UP if readiness check is undefined', () => {
+      let route = routes.checkReadiness();
+      let [req, res] = makeReqRes(200, {
+        status: "UP"
+      });
+
+      return route(req, res);
+    });
+
+
+
+    it('should return 200 and UP if readiness check is undefined', () => {
+      let route = routes.checkReadiness({});
+      let [req, res] = makeReqRes(200, {
+        status: "UP"
+      });
+
+      return route(req, res);
+    });
+
+    it('should return 200 OK if all checks pass', () => {
+      let route = routes.checkReadiness({
+          check1: makeCheck(true),
+          check2: makeCheck(true)
+      });
+      let [req, res] = makeReqRes(200, {
+        status: outputs.UP,
+        check1: {status: "UP"},
+        check2: {status: "UP"}
+      });
+
+      return route(req, res);
+    });
+
+    it('should return 500 DOWN if any readiness checks fail', () => {
+      let route = routes.checkReadiness({
+        check1: makeCheck(false),
+        check2: makeCheck(true),
+      });
+      let [req, res] = makeReqRes(500, {
+        status: "DOWN",
+        check1: {status: "DOWN"},
+        check2: {status: "UP"}
+      });
+
+      return route(req, res);
+    });
+
     it('should return the extra build info', () => {
       let route = routes.configure({
         checks: {
