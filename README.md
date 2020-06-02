@@ -36,7 +36,7 @@ const config = {
 healthcheck.addTo(app, config);
 ```
 
-You can optionally include some readiness checks.
+You can optionally include [readiness checks](#what-to-include-in-readiness-checks).
 
 ```javascript
 const config = {
@@ -62,6 +62,24 @@ const config = {
 };
 healthcheck.addTo(app, config);
 ```
+
+## what to include in readiness checks
+
+- On Kubernetes, readiness probes will be called periodically throughout the lifetime of the container. Container will be made temporarily unavailable from serving traffic when the readiness check fails.
+- The requests won't even reach your application to handle errors. So, it is very important to consider what checks should be included into readiness probe.
+- While adding all dependant services to readiness check can help in identifying any misconfiguration during startup, it could cause unwanted downtime for the application.
+- K8s introduced startUp Probes (Alpha in  1.16 ) to handle startup cases separately.
+
+Based on above, you should include a dependency into readiness checks only if they are exclusive/hard dependencies for your service. Unavailability of soft dependencies needs to be handled in code to give appropriate customer experience.
+
+Good example for check to be included in readiness:
+
+- A private cache / database like `Redis` or `Elastic Search` which are exclusive to the application (not shared).
+
+Bad example for check to be included in readiness:
+
+- Any shared components like IDAM, S2S or CCD.
+
 
 ## Publishing
 
