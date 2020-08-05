@@ -7,7 +7,7 @@ A library for adding reform standard compliant healthchecks to nodejs applicatio
 It exposes 3 endpoints:
 
 1. `/health` - Returns 200 by default  along with `buildInfo`, can optionally include result evaluating all `checks` passed in config.
-2. `/health/livness` - Returns 200 always.
+2. `/health/liveness` - Returns 200 always.
 3. `/health/readiness` - Returns 200 by default , can optionally include result evaluating all `readinessChecks` passed in config.
 
 ## Usage
