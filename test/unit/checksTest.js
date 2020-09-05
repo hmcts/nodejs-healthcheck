@@ -20,7 +20,7 @@ describe('Checks', () => {
         request.reply(200, 'OK')
 
         check.call().then((result) => {
-          expect(result).to.eql({ status: 'UP', details : { url: 'https://example.com/status' } })
+          expect(result).to.eql({ status: 'UP', details: { url: 'https://example.com/status' } })
           done()
         })
       });
