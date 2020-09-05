@@ -17,7 +17,7 @@ class WebCheck {
   }
 
   defaultCallback (err, res) {
-    return !err && res.status === 200 ? outputs.up({details:{url:this.url}}) : outputs.down(err)
+    return !err && res.status === 200 ? outputs.up({ details: { url: this.url } }) : outputs.down(err)
   }
 
   call () {
