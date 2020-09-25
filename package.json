@@ -36,6 +36,6 @@
     "proxyquire": "2",
     "sinon": "9",
     "sinon-chai": "3",
-    "supertest": "4"
+    "supertest": "5"
   }
 }
