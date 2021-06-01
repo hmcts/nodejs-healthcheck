@@ -32,7 +32,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "express": "^4.16.4",
     "mocha": "7",
-    "nock": "12",
+    "nock": "13",
     "proxyquire": "2",
     "sinon": "9",
     "sinon-chai": "3",
