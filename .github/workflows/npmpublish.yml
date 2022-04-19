@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: 10
+          node-version: 12
       - run: yarn install --frozen-lockfile
       - run: yarn test
       - run: yarn lint
@@ -48,7 +48,7 @@ jobs:
       - uses: actions/setup-node@v1
         if: startsWith(github.ref, 'refs/tags')
         with:
-          node-version: 10
+          node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@hmcts'
       - run: npm publish
