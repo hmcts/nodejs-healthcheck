@@ -17,7 +17,7 @@
   "author": "HMCTS Reform",
   "license": "MIT",
   "dependencies": {
-    "@hmcts/nodejs-logging": "^3.0.1",
+    "@hmcts/nodejs-logging": "^4.0.1",
     "js-yaml": "^3.8.4",
     "superagent": "7"
   },
