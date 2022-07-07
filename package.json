@@ -1,6 +1,6 @@
 {
   "name": "@hmcts/nodejs-healthcheck",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "Healthcheck endpoint for Reform nodejs applications",
   "main": "index.js",
   "engines": {
