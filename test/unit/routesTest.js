@@ -97,14 +97,14 @@ describe('Routes', () => {
       return route(req, res)
     })
 
-    it('should return 500 DOWN if any checks fail', () => {
+    it('should return 503 DOWN if any checks fail', () => {
       const route = routes.configure({
         checks: {
           check1: makeCheck(false),
           check2: makeCheck(true)
         }
       })
-      const [req, res] = makeReqRes(500, {
+      const [req, res] = makeReqRes(503, {
         status: 'DOWN',
         check1: { status: 'DOWN' },
         check2: { status: 'UP' },
