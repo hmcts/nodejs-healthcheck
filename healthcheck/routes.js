@@ -42,7 +42,7 @@ function configure (config) {
           results,
           { buildInfo }
         )
-        const status = allOk ? 200 : 500
+        const status = allOk ? 200 : 503
         if (!allOk) {
           const downHealthChecks = Object.values(results)
             .filter(result => result.status === outputs.DOWN)
