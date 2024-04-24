@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "@hmcts/nodejs-logging": "^4.0.4",
-    "js-yaml": "^3.8.4",
+    "js-yaml": "^4.0.0",
     "superagent": "9"
   },
   "devDependencies": {
