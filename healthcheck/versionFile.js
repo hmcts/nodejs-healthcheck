@@ -13,7 +13,7 @@ const versionFile = () => {
   }
 
   return fs.readFile(versionFilePath)
-    .then(yaml.safeLoad)
+    .then(yaml.load)
     .catch((err) => defaultObj)
 }
 
