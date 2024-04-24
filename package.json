@@ -19,7 +19,7 @@
   "dependencies": {
     "@hmcts/nodejs-logging": "^4.0.4",
     "js-yaml": "^3.8.4",
-    "superagent": "8"
+    "superagent": "9"
   },
   "devDependencies": {
     "chai": "^4.1.1",
