@@ -18,8 +18,8 @@
   "license": "MIT",
   "dependencies": {
     "@hmcts/nodejs-logging": "^4.0.4",
-    "js-yaml": "^3.8.4",
-    "superagent": "8"
+    "js-yaml": "^4.0.0",
+    "superagent": "9"
   },
   "devDependencies": {
     "chai": "^4.1.1",
@@ -36,6 +36,6 @@
     "proxyquire": "2",
     "sinon": "17",
     "sinon-chai": "3",
-    "supertest": "6"
+    "supertest": "7"
   }
 }
