@@ -34,7 +34,7 @@
     "mocha": "10",
     "nock": "13",
     "proxyquire": "2",
-    "sinon": "17",
+    "sinon": "18",
     "sinon-chai": "3",
     "supertest": "7"
   }
