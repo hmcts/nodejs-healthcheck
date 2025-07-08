@@ -1,6 +1,6 @@
 {
   "name": "@hmcts/nodejs-healthcheck",
-  "version": "1.8.5",
+  "version": "1.8.6",
   "description": "Healthcheck endpoint for Reform nodejs applications",
   "main": "index.js",
   "engines": {
@@ -19,7 +19,7 @@
   "dependencies": {
     "@hmcts/nodejs-logging": "^4.0.4",
     "js-yaml": "^4.0.0",
-    "superagent": "9"
+    "superagent": "^10.2.2"
   },
   "devDependencies": {
     "chai": "^4.1.1",
