@@ -21,6 +21,9 @@
     "js-yaml": "^4.0.0",
     "superagent": "^10.2.2"
   },
+  "peerDependencies": {
+    "express": ">=4"
+  },
   "devDependencies": {
     "chai": "^4.1.1",
     "chai-as-promised": "^7.1.1",
