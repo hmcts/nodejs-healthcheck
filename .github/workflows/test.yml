@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [18, 24]
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node }}
+      - run: corepack enable
+      - run: yarn install --immutable
+      - run: yarn build
+      - run: yarn lint
+      - run: yarn test

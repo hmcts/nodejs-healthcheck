@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  release:
+    types: [created]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.release.target_commitish }}
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+          cache: yarn
+
+      - run: corepack enable
+      - run: yarn install --immutable
+      - run: yarn build
+
+      - run: npm i -g npm@^11.5.1
+      - run: npm publish --access public
