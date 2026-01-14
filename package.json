@@ -40,5 +40,6 @@
     "sinon": "17",
     "sinon-chai": "3",
     "supertest": "7"
-  }
+  },
+  "packageManager": "yarn@4.5.1"
 }

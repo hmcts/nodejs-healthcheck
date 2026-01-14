@@ -3,3 +3,9 @@ node_modules
 .idea
 /*.tgz
 *.iml
+
+.idea/
+*.iml
+
+.pnp.*
+.yarn/*
