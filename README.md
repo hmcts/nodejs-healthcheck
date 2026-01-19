@@ -1,6 +1,8 @@
 # Nodejs Healthcheck
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/hmcts/nodejs-healthcheck.svg)](https://greenkeeper.io/)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/release/hmcts/nodejs-healthcheck)](
+https://github.com/hmcts/nodejs-healthcheck/releases
+)
 
 A library for adding reform standard compliant healthchecks to nodejs applications.
 
@@ -79,7 +81,6 @@ Good example for check to be included in readiness:
 Bad example for check to be included in readiness:
 
 - Any shared components like IDAM, S2S or CCD.
-
 
 ## Publishing
 
